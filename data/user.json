@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Test User",
+    "phone": "TEST_PHONE_000001",
+    "place": "Test City",
+    "password": "Test@12345",
+    "referral": "100CRCLUBMZ18CBHN"
+  },
+  {
+    "id": 2,
+    "name": "Test User",
+    "phone": "TEST_PHONE_000002",
+    "place": "Test City",
+    "password": "Test@12345",
+    "referral": "100CRCLUBMZ18CBHN"
+  }
+]

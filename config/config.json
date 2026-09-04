@@ -1,0 +1,12 @@
+{
+  "signupUrl": "https://www.100crorescompany.com/signup",
+  "homeUrl": "https://www.100crorescompany.com/home",
+  "name": "Test User",
+  "place": "Test City",
+  "password": "Test@12345",
+  "referralCode": "YOUR_REFERRAL_CODE",
+  "delayBetweenUsers": 1000,
+  "headless": false,
+  "startPhone": "5000000001",
+  "successSelector": ".success-message"
+}

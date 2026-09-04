@@ -1,0 +1,13 @@
+Phone,Timestamp,Status,Error,Screenshot
+"5000000002","2026-09-03T04:06:46.897Z","FAILED","page.waitForURL: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for navigation until ""load""
+  navigated to ""https://www.universalcompanys.com/dashboard""
+  navigated to ""https://www.universalcompanys.com/dashboard""
+============================================================","screenshots\signup-5000000002-1788408422244.png"
+"5000000003","2026-09-03T04:07:05.099Z","FAILED","page.waitForURL: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for navigation until ""load""
+  navigated to ""https://www.universalcompanys.com/dashboard""
+  navigated to ""https://www.universalcompanys.com/dashboard""
+============================================================","screenshots\signup-5000000003-1788408439885.png"

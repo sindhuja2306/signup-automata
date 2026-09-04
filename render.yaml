@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: signup-automation
+    runtime: docker
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HEADLESS
+        value: "true"
+      - key: SIGNUP_URL
+        sync: false
+      - key: HOME_URL
+        sync: false
+      - key: SIGNUP_NAME
+        sync: false
+      - key: SIGNUP_PLACE
+        sync: false
+      - key: SIGNUP_PASSWORD
+        sync: false
+      - key: DASHBOARD_USERNAME
+        sync: false
+      - key: DASHBOARD_PASSWORD
+        sync: false
