@@ -1,12 +1,12 @@
 // @ts-nocheck
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const express = require("express");
 const cors = require("cors");
 const http = require("http");
 const crypto = require("crypto");
 const socketIo = require("socket.io");
 const { spawn } = require("child_process");
-const path = require("path");
 const fs = require("fs-extra");
 
 const app = express();
@@ -109,12 +109,13 @@ app.post("/api/start", (req, res) => {
 
   // Spawn the automation process
   automationProcess = spawn("node", [
-    "src/runner.js",
+    path.join(__dirname, "runner.js"),
     referralCode,
     targetSignups.toString(),
     startPhone.toString()
   ], {
     stdio: ["pipe", "pipe", "pipe", "ipc"],
+    cwd: path.resolve(__dirname, ".."),
     env: { ...process.env }
   });
 

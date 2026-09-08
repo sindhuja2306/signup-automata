@@ -12,6 +12,11 @@ const args = process.argv.slice(2);
 const referralCode = args[0];
 const targetSignups = parseInt(args[1]) || 1000;
 const startPhone = args[2] || "5000000001";
+const ratePerMinute = Number(process.env.RATE_PER_MINUTE || 10);
+if (!Number.isFinite(ratePerMinute) || ratePerMinute <= 0) {
+  throw new Error("RATE_PER_MINUTE must be a positive number");
+}
+const delayBetweenAttempts = 60000 / ratePerMinute;
 
 const resultsPath = path.join(__dirname, "../results/results.json");
 fs.ensureDirSync(path.join(__dirname, "../results"));
@@ -83,8 +88,11 @@ async function main() {
     ]
   });
 
-  const signupUrl = process.env.SIGNUP_URL || "https://example.com/signup";
-  const homeUrl = process.env.HOME_URL || "https://example.com/home";
+  const signupUrl = process.env.SIGNUP_URL;
+  const homeUrl = process.env.HOME_URL;
+  if (!signupUrl || !homeUrl || signupUrl.includes("example.com") || homeUrl.includes("example.com")) {
+    throw new Error("Configure SIGNUP_URL and HOME_URL in .env before starting the runner");
+  }
 
   for (let i = 1; i <= targetSignups; i++) {
     if (!stats.isRunning) break;
@@ -281,9 +289,7 @@ async function main() {
       saveResults();
     }
 
-    // Random delay between attempts (500ms - 1500ms)
-    const delay = 500 + Math.random() * 1000;
-    await new Promise(resolve => setTimeout(resolve, delay));
+    await new Promise(resolve => setTimeout(resolve, delayBetweenAttempts));
   }
 
   await browser.close();
